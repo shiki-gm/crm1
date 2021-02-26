@@ -48,6 +48,13 @@ export function getRoutes() {
                 "exact": true
               },
               {
+                "path": "/count",
+                "name": "count",
+                "icon": "smile",
+                "component": dynamic({ loader: () => import(/* webpackChunkName: 'p__NewCount' */'/Users/shiki/company/crm1/src/pages/NewCount'), loading: LoadingComponent}),
+                "exact": true
+              },
+              {
                 "path": "/admin",
                 "name": "admin",
                 "icon": "crown",
@@ -77,6 +84,7 @@ export function getRoutes() {
               },
               {
                 "component": dynamic({ loader: () => import(/* webpackChunkName: 'p__404' */'/Users/shiki/company/crm1/src/pages/404'), loading: LoadingComponent}),
+                "redirect": "/welcome",
                 "exact": true
               }
             ]

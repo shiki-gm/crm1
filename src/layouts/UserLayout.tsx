@@ -12,18 +12,18 @@ export type UserLayoutProps = {
   breadcrumbNameMap: Record<string, MenuDataItem>;
 } & Partial<ConnectProps>;
 
-const UserLayout: React.FC<UserLayoutProps> = (props) => {
+const UserLayout: React.FC<UserLayoutProps> = props => {
   const {
     route = {
-      routes: [],
-    },
+      routes: []
+    }
   } = props;
   const { routes = [] } = route;
   const {
     children,
     location = {
-      pathname: '',
-    },
+      pathname: ''
+    }
   } = props;
   const { formatMessage } = useIntl();
   const { breadcrumb } = getMenuData(routes);
@@ -31,7 +31,7 @@ const UserLayout: React.FC<UserLayoutProps> = (props) => {
     pathname: location.pathname,
     formatMessage,
     breadcrumb,
-    ...props,
+    ...props
   });
   return (
     <HelmetProvider>

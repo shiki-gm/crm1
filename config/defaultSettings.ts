@@ -15,7 +15,7 @@ const proSettings: DefaultSettings = {
   colorWeak: false,
   title: 'Ant Design Pro',
   pwa: false,
-  iconfontUrl: '',
+  iconfontUrl: ''
 };
 
 export type { DefaultSettings };

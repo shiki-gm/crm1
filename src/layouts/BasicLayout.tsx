@@ -6,7 +6,7 @@
 import type {
   MenuDataItem,
   BasicLayoutProps as ProLayoutProps,
-  Settings,
+  Settings
 } from '@ant-design/pro-layout';
 import ProLayout, { DefaultFooter } from '@ant-design/pro-layout';
 import React, { useEffect, useMemo, useRef } from 'react';
@@ -46,10 +46,10 @@ export type BasicLayoutContext = { [K in 'location']: BasicLayoutProps[K] } & {
 /** Use Authorized check all menu item */
 
 const menuDataRender = (menuList: MenuDataItem[]): MenuDataItem[] =>
-  menuList.map((item) => {
+  menuList.map(item => {
     const localItem = {
       ...item,
-      children: item.children ? menuDataRender(item.children) : undefined,
+      children: item.children ? menuDataRender(item.children) : undefined
     };
     return Authorized.check(item.authority, localItem, null) as MenuDataItem;
   });
@@ -62,32 +62,32 @@ const defaultFooterDom = (
         key: 'Ant Design Pro',
         title: 'Ant Design Pro',
         href: 'https://pro.ant.design',
-        blankTarget: true,
+        blankTarget: true
       },
       {
         key: 'github',
         title: <GithubOutlined />,
         href: 'https://github.com/ant-design/ant-design-pro',
-        blankTarget: true,
+        blankTarget: true
       },
       {
         key: 'Ant Design',
         title: 'Ant Design',
         href: 'https://ant.design',
-        blankTarget: true,
-      },
+        blankTarget: true
+      }
     ]}
   />
 );
 
-const BasicLayout: React.FC<BasicLayoutProps> = (props) => {
+const BasicLayout: React.FC<BasicLayoutProps> = props => {
   const {
     dispatch,
     children,
     settings,
     location = {
-      pathname: '/',
-    },
+      pathname: '/'
+    }
   } = props;
 
   const menuDataRef = useRef<MenuDataItem[]>([]);
@@ -95,7 +95,7 @@ const BasicLayout: React.FC<BasicLayoutProps> = (props) => {
   useEffect(() => {
     if (dispatch) {
       dispatch({
-        type: 'user/fetchCurrent',
+        type: 'user/fetchCurrent'
       });
     }
   }, []);
@@ -105,7 +105,7 @@ const BasicLayout: React.FC<BasicLayoutProps> = (props) => {
     if (dispatch) {
       dispatch({
         type: 'global/changeLayoutCollapsed',
-        payload,
+        payload
       });
     }
   };
@@ -113,9 +113,9 @@ const BasicLayout: React.FC<BasicLayoutProps> = (props) => {
   const authorized = useMemo(
     () =>
       getMatchMenu(location.pathname || '/', menuDataRef.current).pop() || {
-        authority: undefined,
+        authority: undefined
       },
-    [location.pathname],
+    [location.pathname]
   );
 
   const { formatMessage } = useIntl();
@@ -141,9 +141,9 @@ const BasicLayout: React.FC<BasicLayoutProps> = (props) => {
       breadcrumbRender={(routers = []) => [
         {
           path: '/',
-          breadcrumbName: formatMessage({ id: 'menu.home' }),
+          breadcrumbName: formatMessage({ id: 'menu.home' })
         },
-        ...routers,
+        ...routers
       ]}
       itemRender={(route, params, routes, paths) => {
         const first = routes.indexOf(route) === 0;
@@ -153,15 +153,15 @@ const BasicLayout: React.FC<BasicLayoutProps> = (props) => {
           <span>{route.breadcrumbName}</span>
         );
       }}
-      footerRender={() => {
-        if (settings.footerRender || settings.footerRender === undefined) {
-          return defaultFooterDom;
-        }
-        return null;
-      }}
+      // footerRender={() => {
+      //   if (settings.footerRender || settings.footerRender === undefined) {
+      //     return defaultFooterDom;
+      //   }
+      //   return null;
+      // }}
       menuDataRender={menuDataRender}
       rightContentRender={() => <RightContent />}
-      postMenuData={(menuData) => {
+      postMenuData={menuData => {
         menuDataRef.current = menuData || [];
         return menuData || [];
       }}
@@ -175,5 +175,5 @@ const BasicLayout: React.FC<BasicLayoutProps> = (props) => {
 
 export default connect(({ global, settings }: ConnectState) => ({
   collapsed: global.collapsed,
-  settings,
+  settings
 }))(BasicLayout);

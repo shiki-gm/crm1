@@ -10,35 +10,35 @@ export default defineConfig({
   hash: true,
   antd: {},
   dva: {
-    hmr: true,
+    hmr: true
   },
   history: {
-    type: 'browser',
+    type: 'browser'
   },
   locale: {
     // default zh-CN
     default: 'zh-CN',
     antd: true,
     // default true, when it is true, will use `navigator.language` overwrite default
-    baseNavigator: true,
+    baseNavigator: true
   },
   dynamicImport: {
-    loading: '@/components/PageLoading/index',
+    loading: '@/components/PageLoading/index'
   },
   targets: {
-    ie: 11,
+    ie: 11
   },
   // umi routes: https://umijs.org/docs/routing
   routes,
   // Theme for antd: https://ant.design/docs/react/customize-theme-cn
   theme: {
-    'primary-color': defaultSettings.primaryColor,
+    'primary-color': defaultSettings.primaryColor
   },
   title: false,
   ignoreMomentLocale: true,
   proxy: proxy[REACT_APP_ENV || 'dev'],
   manifest: {
-    basePath: '/',
+    basePath: '/'
   },
-  esbuild: {},
+  esbuild: {}
 });

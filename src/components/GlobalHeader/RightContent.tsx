@@ -17,10 +17,10 @@ export type GlobalHeaderRightProps = {
 const ENVTagColor = {
   dev: 'orange',
   test: 'green',
-  pre: '#87d068',
+  pre: '#87d068'
 };
 
-const GlobalHeaderRight: React.SFC<GlobalHeaderRightProps> = (props) => {
+const GlobalHeaderRight: React.SFC<GlobalHeaderRightProps> = props => {
   const { theme, layout } = props;
   let className = styles.right;
 
@@ -38,16 +38,16 @@ const GlobalHeaderRight: React.SFC<GlobalHeaderRightProps> = (props) => {
           { label: <a href="https://umijs.org/zh/guide/umi-ui.html">umi ui</a>, value: 'umi ui' },
           {
             label: <a href="next.ant.design">Ant Design</a>,
-            value: 'Ant Design',
+            value: 'Ant Design'
           },
           {
             label: <a href="https://protable.ant.design/">Pro Table</a>,
-            value: 'Pro Table',
+            value: 'Pro Table'
           },
           {
             label: <a href="https://prolayout.ant.design/">Pro Layout</a>,
-            value: 'Pro Layout',
-          },
+            value: 'Pro Layout'
+          }
         ]}
         // onSearch={value => {
         //   //console.log('input', value);
@@ -56,7 +56,7 @@ const GlobalHeaderRight: React.SFC<GlobalHeaderRightProps> = (props) => {
       <Tooltip title="使用文档">
         <a
           style={{
-            color: 'inherit',
+            color: 'inherit'
           }}
           target="_blank"
           href="https://pro.ant.design/docs/getting-started"
@@ -72,12 +72,12 @@ const GlobalHeaderRight: React.SFC<GlobalHeaderRightProps> = (props) => {
           <Tag color={ENVTagColor[REACT_APP_ENV]}>{REACT_APP_ENV}</Tag>
         </span>
       )}
-      <SelectLang className={styles.action} />
+      {/* <SelectLang className={styles.action} /> */}
     </div>
   );
 };
 
 export default connect(({ settings }: ConnectState) => ({
   theme: settings.navTheme,
-  layout: settings.layout,
+  layout: settings.layout
 }))(GlobalHeaderRight);

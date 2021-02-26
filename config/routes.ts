@@ -10,9 +10,9 @@
           {
             name: 'login',
             path: '/user/login',
-            component: './User/login',
-          },
-        ],
+            component: './User/login'
+          }
+        ]
       },
       {
         path: '/',
@@ -25,13 +25,19 @@
             routes: [
               {
                 path: '/',
-                redirect: '/welcome',
+                redirect: '/welcome'
               },
               {
                 path: '/welcome',
                 name: 'welcome',
                 icon: 'smile',
-                component: './Welcome',
+                component: './Welcome'
+              },
+              {
+                path: '/count',
+                name: 'count',
+                icon: 'smile',
+                component: './NewCount'
               },
               {
                 path: '/admin',
@@ -45,29 +51,30 @@
                     name: 'sub-page',
                     icon: 'smile',
                     component: './Welcome',
-                    authority: ['admin'],
-                  },
-                ],
+                    authority: ['admin']
+                  }
+                ]
               },
               {
                 name: 'list.table-list',
                 icon: 'table',
                 path: '/list',
-                component: './TableList',
+                component: './TableList'
               },
               {
                 component: './404',
-              },
-            ],
+                redirect: '/welcome'
+              }
+            ]
           },
           {
-            component: './404',
-          },
-        ],
-      },
-    ],
+            component: './404'
+          }
+        ]
+      }
+    ]
   },
   {
-    component: './404',
-  },
+    component: './404'
+  }
 ];
