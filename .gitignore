@@ -4,4 +4,5 @@ node_modules
 .umi
 /package-lock.json
 .DS_Store
+.DS_Store/
 # .gitignore
